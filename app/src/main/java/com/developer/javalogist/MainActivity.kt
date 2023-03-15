@@ -3,13 +3,22 @@ package com.developer.javalogist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.developer.javalogist.components.GmailDrawerMenu
+import com.developer.javalogist.components.HomeAppBar
+import com.developer.javalogist.components.HomeBottomMenu
 import com.developer.javalogist.ui.theme.GmailCloneTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,12 +26,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GmailCloneTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    GmailApp()
                 }
             }
         }
@@ -30,14 +38,33 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun GmailApp() {
+
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    val scrollState = rememberScrollState()
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = { HomeAppBar(scaffoldState, scope) },
+        drawerContent = {
+            GmailDrawerMenu(scrollState)
+        },
+        bottomBar = {
+            HomeBottomMenu()
+        }
+    ) {
+        LazyColumn(
+            modifier = Modifier.padding(it)
+        ) {
+
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     GmailCloneTheme {
-        Greeting("Android")
+        GmailApp()
     }
 }
