@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.developer.javalogist.components.GmailDrawerMenu
 import com.developer.javalogist.components.HomeAppBar
 import com.developer.javalogist.components.HomeBottomMenu
+import com.developer.javalogist.components.MailList
 import com.developer.javalogist.ui.theme.GmailCloneTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,11 +54,7 @@ fun GmailApp() {
             HomeBottomMenu()
         }
     ) {
-        LazyColumn(
-            modifier = Modifier.padding(it)
-        ) {
-
-        }
+        MailList(paddingValues = it)
     }
 }
 
