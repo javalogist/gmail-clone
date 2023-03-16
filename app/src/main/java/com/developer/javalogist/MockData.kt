@@ -1,7 +1,34 @@
 package com.developer.javalogist
 
+import com.developer.javalogist.model.Account
 import com.developer.javalogist.model.MailData
 
+val accountList = listOf(
+    Account(
+        icon = R.drawable.newgmaillogo,
+        userName = "Vince Vijay",
+        email = "vince.vijay@rubicotech.in",
+        unReadMails = 88
+    ),
+
+    Account(
+        userName = "Vince Vijay",
+        email = "vince.vijay@rubicotech.in",
+        unReadMails = 88
+    ),
+
+    Account(
+        userName = "Vince Vijay",
+        email = "vince.vijay@rubicotech.in",
+        unReadMails = 88
+    ),
+
+    Account(
+        userName = "Vince Vijay",
+        email = "vince.vijay@rubicotech.in",
+        unReadMails = 88
+    ),
+)
 val mailList = listOf(
     MailData(
         mailId = 1,
